@@ -1,10 +1,8 @@
 def main():
     book_path = "books/frankenstein.txt"
     text = get_book_text(book_path)
-    # print(text)
     count_words(text)
     list_count_chars = count_chars(text)
-    count_chars(text)
     sort_lists(list_count_chars)
 
 def get_book_text(path):
@@ -16,7 +14,7 @@ def count_words(list_words):
     count = 0
     for x in wrds:
         count += 1
-    print(count)
+    print(f"{count} words found in document")
 
 def count_chars(book):
     char_dict = {}          # Initialize the dictionary to store character counts
@@ -28,7 +26,6 @@ def count_chars(book):
                 char_dict[char1] += 1
             else:
                 char_dict[char1] = 1
-    print(char_dict)
     return char_dict
 
 def sort_lists(unsorted_dict):
@@ -36,6 +33,10 @@ def sort_lists(unsorted_dict):
     for char, count in unsorted_dict.items():
         new_list.append([char,count])
     new_list.sort(key=lambda x:x[1], reverse=True)
+    total_value = 0
+    for char, count in new_list:
+        total_value += count
+    print(f"{total_value} characters found in the document")
     for char, count in new_list:
         print(f"The {char} character was found {count} times")
 main()
