@@ -3,7 +3,9 @@ def main():
     text = get_book_text(book_path)
     # print(text)
     count_words(text)
+    list_count_chars = count_chars(text)
     count_chars(text)
+    sort_lists(list_count_chars)
 
 def get_book_text(path):
     with open(path) as f:
@@ -27,5 +29,13 @@ def count_chars(book):
             else:
                 char_dict[char1] = 1
     print(char_dict)
+    return char_dict
 
+def sort_lists(unsorted_dict):
+    new_list = []
+    for char, count in unsorted_dict.items():
+        new_list.append([char,count])
+    new_list.sort(key=lambda x:x[1], reverse=True)
+    for char, count in new_list:
+        print(f"The {char} character was found {count} times")
 main()
